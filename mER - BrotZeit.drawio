@@ -49,6 +49,9 @@
         <mxCell id="eu2eqUCKp1kraOAFug7d-37" edge="1" parent="1" source="eu2eqUCKp1kraOAFug7d-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=65;startArrow=none;startFill=0;endArrow=none;endFill=0;entryPerimeter=0;" target="eu2eqUCKp1kraOAFug7d-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="s6aLaJV3Cse0K_20ufJ3-2" edge="1" parent="1" source="eu2eqUCKp1kraOAFug7d-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="s6aLaJV3Cse0K_20ufJ3-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="eu2eqUCKp1kraOAFug7d-11" parent="1" style="whiteSpace=wrap;html=1;align=center;" value="Filiale" vertex="1">
           <mxGeometry height="40" width="100" x="39" y="385" as="geometry" />
         </mxCell>
@@ -80,6 +83,9 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="168.95999999999998" y="360" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="s6aLaJV3Cse0K_20ufJ3-1" parent="1" style="whiteSpace=wrap;html=1;align=center;" value="FilialOrt" vertex="1">
+          <mxGeometry height="40" width="100" x="39" y="470" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
