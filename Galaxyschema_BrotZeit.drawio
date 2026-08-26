@@ -1,11 +1,11 @@
 <mxfile host="Electron">
   <diagram name="Seite-1" id="ogITLtYWRx25nazuLYOD">
-    <mxGraphModel dx="1664" dy="989" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1828" dy="934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="EbyWDP1CR1is03jyLzi4-1" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;fillColor=#fff2cc;strokeColor=#d6b656;" value="F_Verkäufe" vertex="1">
-          <mxGeometry height="236" width="160" x="200" y="276" as="geometry" />
+          <mxGeometry height="266" width="160" x="200" y="276" as="geometry" />
         </mxCell>
         <mxCell id="EbyWDP1CR1is03jyLzi4-2" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK Verkäufer ID" vertex="1">
           <mxGeometry height="30" width="160" y="26" as="geometry" />
@@ -19,14 +19,17 @@
         <mxCell id="EbyWDP1CR1is03jyLzi4-11" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK StundenID" vertex="1">
           <mxGeometry height="30" width="160" y="116" as="geometry" />
         </mxCell>
-        <mxCell id="EbyWDP1CR1is03jyLzi4-13" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="Gewinn" vertex="1">
+        <mxCell id="reeaxcRTML1XzaJXW5Z3-1" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK ProduktID" vertex="1">
           <mxGeometry height="30" width="160" y="146" as="geometry" />
         </mxCell>
-        <mxCell id="EbyWDP1CR1is03jyLzi4-14" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="AnzahlProdukte" vertex="1">
+        <mxCell id="EbyWDP1CR1is03jyLzi4-13" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="Gewinn" vertex="1">
           <mxGeometry height="30" width="160" y="176" as="geometry" />
         </mxCell>
-        <mxCell id="EbyWDP1CR1is03jyLzi4-76" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="Umsatz" vertex="1">
+        <mxCell id="EbyWDP1CR1is03jyLzi4-14" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="AnzahlProdukte" vertex="1">
           <mxGeometry height="30" width="160" y="206" as="geometry" />
+        </mxCell>
+        <mxCell id="EbyWDP1CR1is03jyLzi4-76" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="Umsatz" vertex="1">
+          <mxGeometry height="30" width="160" y="236" as="geometry" />
         </mxCell>
         <mxCell id="EbyWDP1CR1is03jyLzi4-18" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" value="D_Verkäufer" vertex="1">
           <mxGeometry height="86" width="160" x="417" y="240" as="geometry" />
