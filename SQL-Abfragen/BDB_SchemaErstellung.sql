@@ -2,6 +2,7 @@
 CREATE DATABASE BDB_BackZeit;
 GO
 
+-- Verwende erstellte Datenbank
 USE BDB_BackZeit;
 GO
 
@@ -24,7 +25,7 @@ GO
 
 CREATE TABLE bdb_Personal.Mitarbeiter (
 	MitarbeiterID INT Identity(1,1) NOT NULL PRIMARY Key,
-	Name NVARCHAR(50) NOT NULL,
+	MitarbeiterName NVARCHAR(50) NOT NULL, -- Name spezifiziert
 	Geschlecht CHAR,
 	StundenProWoche Decimal(4,2) NOT NULL,
 	Kündigungsdatum DATETIME2,
@@ -44,11 +45,11 @@ CREATE TABLE bdb_Immobilienverwaltung.Filiale(
 	FilialID INT Identity(1,1) NOT NULL PRIMARY Key,
 	Filialname NVARCHAR(50) UNIQUE NOT NULL,
 	AdresseID INTEGER NOT NULL FOREIGN KEY REFERENCES bdb_Verwaltung.Adresse(AdresseID),
-	Stromkosten Decimal(7,2) NOT NULL,
-	Heizkosten Decimal(7,2) NOT NULL,
-	Kaltmiete Decimal(7,2) NOT NULL,
-	sonstNebenkosten Decimal(7,2) NOT NULL,
-	GrößeInQm Decimal(7,2) NOT NULL
+	Stromkosten Decimal(7,2),
+	Heizkosten Decimal(7,2),
+	Kaltmiete Decimal(7,2),
+	sonstNebenkosten Decimal(7,2),
+	GrößeInQm Decimal(7,2)
 );
 GO
 
@@ -74,7 +75,7 @@ CREATE TABLE bdb_Kassensystem.Verkauf(
 
 CREATE TABLE bdb_Kassensystem.Kategorie(
 	KategorieID INT NOT NULL PRIMARY KEY,
-    Name NVARCHAR(50) NOT NULL
+    KategorieName NVARCHAR(50) NOT NULL  -- Name spezifiziert
 );
 CREATE TABLE bdb_Kassensystem.Produkt(
 	ProduktID INT NOT NULL PRIMARY KEY,
@@ -103,7 +104,7 @@ CREATE TABLE bdb_Kassensystem.wirdVerkauft(
 	FilialID INT NOT NULL,
     Zeitpunkt DATETIME2 NOT NULL,
     ProduktID INT NOT NULL,
-    Menge DECIMAL(5,2),
+    Menge DECIMAL(5,2) NOT NULL,
     PRIMARY KEY (FilialID, Zeitpunkt, ProduktID),
     FOREIGN KEY (FilialID) REFERENCES bdb_Immobilienverwaltung.Filiale(FilialID),
     FOREIGN KEY (ProduktID) REFERENCES bdb_Kassensystem.Produkt(ProduktID),
@@ -124,7 +125,7 @@ CREATE TABLE bdb_Rezepte.Rezept(
 	gültigAb DateTime2,
 	Backzeit Decimal(4,2) NOT NULL,
 	Autor NVARCHAR(50) NOT NULL,
-	Stückzahl TINYINT,
+	Stückzahl TINYINT NOT NULL,
 	PRIMARY KEY (ProduktID, RezeptVersion),
 	FOREIGN KEY (ProduktID) REFERENCES bdb_Kassensystem.Produkt(ProduktID)
 );
@@ -138,7 +139,7 @@ CREATE TABLE bdb_Rezepte.Zutat(
 	Bezeichnung NVARCHAR(50) NOT NULL
 );
 --
-CREATE TABLE bdb_Rezepte.beinhatet(
+CREATE TABLE bdb_Rezepte.beinhaltet(
 	ZutatID INT NOT NULL,
 	RezeptVersion SMALLINT NOT NULL,
 	ProduktID INT NOT NULL,
