@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Seite-1" id="ogITLtYWRx25nazuLYOD">
-    <mxGraphModel dx="1182" dy="661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2350" dy="1201" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -16,7 +16,7 @@
         <mxCell id="EbyWDP1CR1is03jyLzi4-4" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK DatumID" vertex="1">
           <mxGeometry height="30" width="160" y="86" as="geometry" />
         </mxCell>
-        <mxCell id="EbyWDP1CR1is03jyLzi4-11" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK StundenID" vertex="1">
+        <mxCell id="EbyWDP1CR1is03jyLzi4-11" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK ZeitID" vertex="1">
           <mxGeometry height="30" width="160" y="116" as="geometry" />
         </mxCell>
         <mxCell id="Dy7P4QUpGiZXo3Pz-pCb-1" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK ProduktID" vertex="1">
@@ -82,7 +82,7 @@
         <mxCell id="EbyWDP1CR1is03jyLzi4-42" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" value="D_Zeit" vertex="1">
           <mxGeometry height="116" width="160" x="200" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="EbyWDP1CR1is03jyLzi4-43" parent="EbyWDP1CR1is03jyLzi4-42" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="StundenID (PK)" vertex="1">
+        <mxCell id="EbyWDP1CR1is03jyLzi4-43" parent="EbyWDP1CR1is03jyLzi4-42" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="ZeitID (PK)" vertex="1">
           <mxGeometry height="30" width="160" y="26" as="geometry" />
         </mxCell>
         <mxCell id="EbyWDP1CR1is03jyLzi4-44" parent="EbyWDP1CR1is03jyLzi4-42" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="Stunde" vertex="1">
@@ -92,7 +92,7 @@
           <mxGeometry height="30" width="160" y="86" as="geometry" />
         </mxCell>
         <mxCell id="EbyWDP1CR1is03jyLzi4-54" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" value="D_Produkt" vertex="1">
-          <mxGeometry height="326" width="160" x="200" y="656" as="geometry" />
+          <mxGeometry height="356" width="160" x="200" y="656" as="geometry" />
         </mxCell>
         <mxCell id="EbyWDP1CR1is03jyLzi4-55" parent="EbyWDP1CR1is03jyLzi4-54" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="ProduktID (PK)" vertex="1">
           <mxGeometry height="30" width="160" y="26" as="geometry" />
@@ -123,6 +123,9 @@
         </mxCell>
         <mxCell id="EbyWDP1CR1is03jyLzi4-83" parent="EbyWDP1CR1is03jyLzi4-54" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="Zutatenkosten" vertex="1">
           <mxGeometry height="30" width="160" y="296" as="geometry" />
+        </mxCell>
+        <mxCell id="rXlzTpB0vo9Pe5vgPDkx-1" parent="EbyWDP1CR1is03jyLzi4-54" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="KategorieName" vertex="1">
+          <mxGeometry height="30" width="160" y="326" as="geometry" />
         </mxCell>
         <mxCell id="EbyWDP1CR1is03jyLzi4-68" edge="1" parent="1" source="EbyWDP1CR1is03jyLzi4-1" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="EbyWDP1CR1is03jyLzi4-42" value="">
           <mxGeometry relative="1" as="geometry">
