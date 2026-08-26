@@ -8,10 +8,10 @@ DELETE D_Produkt;
 
 GO
 -- Erstellen der Stored Procedure
-CREATE PROCEDURE dwh1.sp_FillDimArtikel
+CREATE PROCEDURE sp_FillDimProdukt
 AS
 BEGIN
-    INSERT INTO dwh1.DIM_Artikel (ArtikelID, Artikelname, Artikelnummer, ArtikelgruppeID, Artikelgruppe)
+    INSERT INTO D_Produkt (ProduktID, ProduktName, Bruttopreis, Nettopreis, Lagerkosten, Backkosten, Lohnkosten, Zutatenkosten, Gewinnmarge, KategorieID, KategorieName)
     --SELECT k.KasseID,
     --       f.FilialID,
     --       f.FilialName,
