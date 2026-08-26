@@ -47,7 +47,7 @@ CREATE TABLE D_Filiale (
     FilialID            INT           PRIMARY KEY,
     FilialName   nvarchar(50)    NOT NULL,
     FilialOrt nvarchar(50) NOT NULL,
-    FilialName_Hist nvarchar(50) NOT NULL --veraltete Filialnamen können hier abgespeichert werden
+    FilialName_Hist nvarchar(50) --veraltete Filialnamen können hier abgespeichert werden
 );
 
 CREATE TABLE D_Verkaufsvorgang (
@@ -60,6 +60,7 @@ CREATE TABLE D_Verkaufsvorgang (
 
 CREATE TABLE F_Verkäufe (
     DatumID         INT   NOT NULL ,
+    ZeitID  INT NOT NULL,
     ProduktID     INT          NOT NULL  ,
     FilialID       INT          NOT NULL  ,
     VerkäuferID       INT          NOT NULL  ,
@@ -82,7 +83,7 @@ CREATE TABLE F_Verkäuferumsatz (
     AnzahlVerkäufe SMALLINT NOT NULL,
     PRIMARY KEY (DatumID, VerkaufsvorgangID, VerkäuferID),
     FOREIGN KEY (DatumID) REFERENCES D_Datum (DatumID) ON DELETE CASCADE,
-    FOREIGN KEY (VerkaufsvorgangID) REFERENCES D_Produkt (ProduktID) ON DELETE CASCADE,
+    FOREIGN KEY (VerkaufsvorgangID) REFERENCES D_Verkaufsvorgang (VerkaufsvorgangID) ON DELETE CASCADE,
     FOREIGN KEY (VerkäuferID) REFERENCES D_Verkäufer (VerkäuferID) ON DELETE CASCADE
 );
 
