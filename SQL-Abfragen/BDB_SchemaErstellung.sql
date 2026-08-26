@@ -1,3 +1,10 @@
+--- Erstelle Business-Datenbank
+CREATE DATABASE BDB_BackZeit;
+GO
+
+USE BDB_BackZeit;
+GO
+
 --- Erstelle Verwaltungsdatenbankschema
 CREATE SCHEMA bdb_Verwaltung;
 GO
@@ -6,7 +13,7 @@ CREATE TABLE bdb_Verwaltung.Adresse(
 	AdresseID INT Identity(1,1) NOT NULL PRIMARY Key,
 	Straße NVARCHAR(50) NOT NULL,
 	PLZ VARCHAR(5) NOT NULL,
-	Ort NVARCHAR(2) NOT NULL,
+	Ort NVARCHAR(20) NOT NULL,
 	Hausnummer NVARCHAR(7)  NOT NULL
 );
 GO
