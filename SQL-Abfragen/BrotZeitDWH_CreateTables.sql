@@ -15,9 +15,9 @@ GO
 
 CREATE TABLE D_Datum (
     DatumID   INT   Primary Key Identity(1,1),
-    Tag     VARCHAR (8)   NOT NULL,
-    Woche   VARCHAR (6)   NOT NULL,
-    Monat   VARCHAR (6)   NOT NULL,
+    Tag     VARCHAR (10)   NOT NULL,
+    Woche   VARCHAR (7)   NOT NULL,
+    Monat   VARCHAR (7)   NOT NULL,
     Jahr      VARCHAR (4)   NOT NULL,
     Wochentag NVARCHAR (15) NOT NULL,
     MonatLang NVARCHAR (15) NOT NULL,
