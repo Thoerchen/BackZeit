@@ -1,11 +1,17 @@
-DROP TABLE F_Verkäufe;
-DROP TABLE F_Verkäuferumsatz;
-DROP TABLE D_Zeit;
-DROP TABLE D_Datum;
-DROP TABLE D_Produkt;
-DROP TABLE D_Verkäufer;
-DROP TABLE D_Filiale;
-DROP TABLE D_Verkaufsvorgang;
+CREATE DATABASE DWH_BackZeit;
+GO
+
+USE DWH_BackZeit;
+GO
+
+--DROP TABLE F_Verkäufe;
+--DROP TABLE F_Verkäuferumsatz;
+--DROP TABLE D_Zeit;
+--DROP TABLE D_Datum;
+--DROP TABLE D_Produkt;
+--DROP TABLE D_Verkäufer;
+--DROP TABLE D_Filiale;
+--DROP TABLE D_Verkaufsvorgang;
 
 CREATE TABLE D_Datum (
     DatumID   INT   Primary Key Identity(1,1),
@@ -67,7 +73,7 @@ CREATE TABLE F_Verkäufe (
     Umsatz         Decimal(7,2)     NOT NULL  ,
     Gewinn DECIMAL (7, 2) NOT NULL,
     AnzahlProdukte SMALLINT NOT NULL,
-    PRIMARY KEY (DatumID, ProduktID, FilialID, VerkäuferID),
+    PRIMARY KEY (DatumID, ZeitID, ProduktID, FilialID, VerkäuferID),
     FOREIGN KEY (DatumID) REFERENCES D_Datum (DatumID) ON DELETE CASCADE,
     FOREIGN KEY (ZeitID) REFERENCES D_Zeit (ZeitID) ON DELETE CASCADE,
     FOREIGN KEY (ProduktID) REFERENCES D_Produkt (ProduktID) ON DELETE CASCADE,
