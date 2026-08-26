@@ -34,7 +34,7 @@ CREATE TABLE D_Produkt (
     ProduktID       INT            PRIMARY KEY,
     ProduktName     NVARCHAR (100) NOT NULL,
     Bruttopreis   DECIMAL(4,2) NOT NULL           ,
-    NettoPreis Decimal(4,2)   NOT NULL         ,
+    Nettopreis Decimal(4,2)   NOT NULL         ,
     Lagerkosten   DECIMAL(4,2) NOT NULL           ,
     Backkosten   DECIMAL(4,2) NOT NULL           ,
     Lohnkosten   DECIMAL(4,2) NOT NULL           ,
