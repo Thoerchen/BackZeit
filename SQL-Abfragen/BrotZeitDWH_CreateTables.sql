@@ -1,11 +1,11 @@
---DROP TABLE F_Verkäufe;
---DROP TABLE F_Verkäuferumsatz;
---DROP TABLE D_Zeit;
---DROP TABLE D_Datum;
---DROP TABLE D_Produkt;
---DROP TABLE D_Verkäufer;
---DROP TABLE D_Filiale;
---DROP TABLE D_Verkaufsvorgang;
+DROP TABLE F_Verkäufe;
+DROP TABLE F_Verkäuferumsatz;
+DROP TABLE D_Zeit;
+DROP TABLE D_Datum;
+DROP TABLE D_Produkt;
+DROP TABLE D_Verkäufer;
+DROP TABLE D_Filiale;
+DROP TABLE D_Verkaufsvorgang;
 
 CREATE TABLE D_Datum (
     DatumID   INT   Primary Key Identity(1,1),
@@ -78,7 +78,7 @@ CREATE TABLE F_Verkäuferumsatz (
     DatumID         INT   NOT NULL ,
     VerkaufsvorgangID     INT          NOT NULL  ,
     VerkäuferID       INT          NOT NULL  ,
-    Gesamtumsatz         Decimal(7,2)     NOT NULL  ,
+    Gesamtumsatz         Decimal(7, 2)     NOT NULL  ,
     DurchschnittlicherUmsatz DECIMAL (7, 2) NOT NULL,
     AnzahlVerkäufe SMALLINT NOT NULL,
     PRIMARY KEY (DatumID, VerkaufsvorgangID, VerkäuferID),
