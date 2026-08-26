@@ -1,5 +1,8 @@
+USE DWH_BackZeit;
+GO
+
 -- Entfernen der Stored Procedure, falls sie existiert
-IF OBJECT_ID('dwh1.sp_FillDimArtikel', 'P') IS NOT NULL
+IF OBJECT_ID('sp_FillDimProdukt', 'P') IS NOT NULL
     BEGIN
         DROP PROCEDURE dwh1.sp_FillDimArtikel;
     END
@@ -12,43 +15,37 @@ CREATE PROCEDURE sp_FillDimProdukt
 AS
 BEGIN
     INSERT INTO D_Produkt (ProduktID, ProduktName, Bruttopreis, Nettopreis, Lagerkosten, Backkosten, Lohnkosten, Zutatenkosten, Gewinnmarge, KategorieID, KategorieName)
-    --SELECT k.KasseID,
-    --       f.FilialID,
-    --       f.FilialName,
-    --       fbz.FilialBezirkID,
-    --       fbz.Filialbezirkname,
-    --       ob.FilialoberbezirkID,
-    --       ob.Filialoberbezirk,
-    --       flk.FiliallandkreisID,
-    --       flk.Filiallandkreis,
-    --       fbl.FilialBundeslandID,
-    --       fbl.FilialBundesland,
-    --       fs.FilialStaatID,
-    --       fs.FilialStaat
-    --FROM   NORTHWND.dbo.Kasse AS k
-    --       INNER JOIN
-    --       NORTHWND.dbo.Filiale AS f
-    --       ON k.FilialID = f.FilialID
-    --       INNER JOIN
-    --       NORTHWND.dbo.Filialbezirk AS fbz
-    --       ON f.FilialbezirkID = fbz.FilialbezirkID
-    --       INNER JOIN
-    --       NORTHWND.dbo.FilialOberbezirk AS ob
-    --       ON fbz.FilialoberbezirkID = ob.FilialoberbezirkID
-    --       INNER JOIN
-    --       NORTHWND.dbo.FilialLandkreis AS flk
-    --       ON f.FiliallandkreisID = flk.FiliallandkreisID
-    --       INNER JOIN
-    --       NORTHWND.dbo.FilialBundesland AS fbl
-    --       ON flk.FilialBundeslandID = fbl.FilialBundeslandID
-    --       INNER JOIN
-    --       NORTHWND.dbo.FilialStaat AS fs
-    --       ON fbl.FilialStaatID = fs.FilialStaatID;
+    SELECT  p.ProduktID,
+            p.ProduktName,
+            p.Bruttopreis,
+            p.Nettopreis,
+            --Lagerkosten
+            r.Backzeit * 5 /r.Stückzahl,
+            r.Zubereitungsdauer * 1 / r.Stückzahl,
+            --Zutatenkosten,
+            --Gewinnmarge,
+            p.KategorieID,
+            k.KategorieName
+    FROM   BDB_BackZeit.bdb_Kassensystem.Produkt AS p
+           Inner JOIN
+           BDB_BackZeit.bdb_Rezepte.Rezept AS r
+           ON p.ProduktID = r.ProduktID
+           INNER JOIN
+           BDB_BackZeit.bdb_Rezepte.beinhaltet AS b
+           ON b.ProduktID = p.ProduktID
+           INNER JOIN
+           BDB_Backzeit.bdb_Rezepte.Zutat AS z
+           ON b.ZutatID = z.ZutatID
+           Inner JOIN
+           BDB_BackZeit.bdb_Kassensystem.Kategorie AS k
+           ON p.KategorieID = k.KategorieID
+           WHERE r.RezeptVersion = MAX((SELECT RezeptVersion FROM BDB_BackZeit.bdb_Rezepte.Rezept WHERE ProduktID = p.ProduktID))
+
 END
 
 
 GO
 
-EXEC dwh1.sp_FillDimArtikel;
+EXEC sp_FillDimProdukt;
 SELECT *
-FROM   dwh1.DIM_Artikel;
+FROM   D_Produkt;
