@@ -1,8 +1,7 @@
-
+-- Erzeuge 100 Datensätze für: bdb_Personal.Mitarbeiter
 USE BDB_BackZeit;
 GO
 
--- 100 Mitarbeiterdatensätze für die Bäckerei mit korrigierten Telefonnummern (max. 12 Ziffern)
 INSERT INTO bdb_Personal.Mitarbeiter (
     MitarbeiterName, Geschlecht, StundenProWoche, Kündigungsdatum,
     GehaltProStunde, Einstellungsdatum, Telefonnummer, AdresseID, Arbeitsbereich
