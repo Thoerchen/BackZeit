@@ -16,7 +16,7 @@
         <mxCell id="EbyWDP1CR1is03jyLzi4-4" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK DatumID" vertex="1">
           <mxGeometry height="30" width="160" y="86" as="geometry" />
         </mxCell>
-        <mxCell id="EbyWDP1CR1is03jyLzi4-11" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK StundenID" vertex="1">
+        <mxCell id="EbyWDP1CR1is03jyLzi4-11" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK ZeitID" vertex="1">
           <mxGeometry height="30" width="160" y="116" as="geometry" />
         </mxCell>
         <mxCell id="Dy7P4QUpGiZXo3Pz-pCb-1" parent="EbyWDP1CR1is03jyLzi4-1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="FK ProduktID" vertex="1">
@@ -82,7 +82,7 @@
         <mxCell id="EbyWDP1CR1is03jyLzi4-42" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" value="D_Zeit" vertex="1">
           <mxGeometry height="116" width="160" x="200" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="EbyWDP1CR1is03jyLzi4-43" parent="EbyWDP1CR1is03jyLzi4-42" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="StundenID (PK)" vertex="1">
+        <mxCell id="EbyWDP1CR1is03jyLzi4-43" parent="EbyWDP1CR1is03jyLzi4-42" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="ZeitID (PK)" vertex="1">
           <mxGeometry height="30" width="160" y="26" as="geometry" />
         </mxCell>
         <mxCell id="EbyWDP1CR1is03jyLzi4-44" parent="EbyWDP1CR1is03jyLzi4-42" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" value="Stunde" vertex="1">
