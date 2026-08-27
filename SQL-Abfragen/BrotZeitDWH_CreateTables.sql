@@ -39,7 +39,7 @@ CREATE TABLE D_Produkt (
     Backkosten   DECIMAL(4,2) NOT NULL           ,
     Lohnkosten   DECIMAL(4,2) NOT NULL           ,
     Zutatenkosten   DECIMAL(4,2) NOT NULL           ,
-    Gewinnmarge   DECIMAL(4,2) NOT NULL           ,
+    Gewinnbetrag AS (Nettopreis - Lagerkosten - Backkosten - Lohnkosten - Zutatenkosten), -- Datentyp ist automatisch Dezimal(4,2) da die Spalten aus denen berechnet wird diesen Typen haben
     KategorieID   INT NOT NULL,
     KategorieName   NVARCHAR (100) NOT NULL
 );
@@ -61,7 +61,7 @@ CREATE TABLE D_Verkaufsvorgang (
     Zeitpunkt   DATETIME2 NOT NULL,
     FilialID    INT NOT NULL,
     Umsatz      DECIMAL(7,2) NOT NULL,
-    Zahlart CHAR(1), --'b' für Barzahlung und 'k' für Kartenzahlung
+    Zahlart CHAR(1), --'B' für Barzahlung und 'K' für Kartenzahlung
     CONSTRAINT UQ_Verkaufsvorgang UNIQUE (Zeitpunkt, FilialID)
 );
 
