@@ -32,8 +32,8 @@ SELECT DISTINCT
         WHEN DATEDIFF(DAY, '19000101', Zeitpunkt) % 7 = 4 THEN 'Freitag'
         WHEN DATEDIFF(DAY, '19000101', Zeitpunkt) % 7 = 5 THEN 'Samstag'
         WHEN DATEDIFF(DAY, '19000101', Zeitpunkt) % 7 = 6 THEN 'Sonntag'
-    END AS Wochentag
-
+    END AS Wochentag,
+ 
     CASE MONTH(Zeitpunkt)
         WHEN 1 THEN 'Januar'
         WHEN 2 THEN 'Februar'
@@ -66,3 +66,5 @@ SELECT DISTINCT
 
 FROM
     BDB_BackZeit.bdb_Kassensystem.Verkauf;
+
+SELECT * FROM DWH_BackZeit.dbo.D_Datum;

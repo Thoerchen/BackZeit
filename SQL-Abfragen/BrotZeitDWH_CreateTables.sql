@@ -1,17 +1,17 @@
---CREATE DATABASE DWH_BackZeit;
---GO
+CREATE DATABASE DWH_BackZeit;
+GO
 
---USE DWH_BackZeit;
---GO
+USE DWH_BackZeit;
+GO
 
-DROP TABLE F_Verkäufe;
-DROP TABLE F_Verkäuferumsatz;
-DROP TABLE D_Zeit;
-DROP TABLE D_Datum;
-DROP TABLE D_Produkt;
-DROP TABLE D_Verkäufer;
-DROP TABLE D_Filiale;
-DROP TABLE D_Verkaufsvorgang;
+--DROP TABLE F_Verkäufe;
+--DROP TABLE F_Verkäuferumsatz;
+--DROP TABLE D_Zeit;
+--DROP TABLE D_Datum;
+--DROP TABLE D_Produkt;
+--DROP TABLE D_Verkäufer;
+--DROP TABLE D_Filiale;
+--DROP TABLE D_Verkaufsvorgang;
 
 CREATE TABLE D_Datum (
     DatumID   INT   Primary Key,
