@@ -16,3 +16,5 @@ SELECT DISTINCT
 
 FROM
     BDB_BackZeit.bdb_Kassensystem.Verkauf;
+
+SELECT * FROM DWH_BackZeit.dbo.D_Zeit;
