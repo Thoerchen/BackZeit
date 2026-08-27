@@ -25,7 +25,7 @@ CREATE TABLE D_Datum (
 );
 
 CREATE TABLE D_Zeit (
-    ZeitID      INT     PRIMARY KEY IDENTITY(1,1),
+    ZeitID      INT     PRIMARY KEY,
     Stunde      NVARCHAR(2) NOT NULL,
     Tageszeit   NVARCHAR (20) NOT NULL
 );
