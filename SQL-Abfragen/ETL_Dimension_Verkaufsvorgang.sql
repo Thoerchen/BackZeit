@@ -1,4 +1,22 @@
+--- ETL für Dimension Verkaufsvorgang
+
 USE BDB_BackZeit;
+GO
+
+
+-- Stored Procedure entfernen, falls sie bereits existiert
+IF OBJECT_ID('sp_FillDimVerkaufsvorgang', 'P') IS NOT NULL
+    BEGIN
+        DROP PROCEDURE sp_FillDimVerkaufsvorgang;
+    END
+
+GO
+
+
+-- Stored Procedure erstellen
+CREATE PROCEDURE sp_FillDimVerkaufsvorgang
+AS
+BEGIN
 
 INSERT INTO DWH_BackZeit.dbo.D_Verkaufsvorgang(Zahlart, FilialID, Zeitpunkt, Umsatz) 
 SELECT
@@ -16,4 +34,17 @@ JOIN
 GROUP BY wirdV.FilialID, wirdV.Zeitpunkt, v.Zahlart;
 
 SELECT * FROM DWH_BackZeit.dbo.D_Verkaufsvorgang
-    
+
+END
+
+GO
+
+-- Stored Procedure ausführen
+EXECUTE sp_FillDimVerkaufsvorgang;
+
+GO
+
+-- Ergebnis kontrollieren
+SELECT *
+FROM   DWH_BackZeit.dbo.D_Verkaufsvorgang;
+
