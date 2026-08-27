@@ -4,7 +4,7 @@ GO
 -- Entfernen der Stored Procedure, falls sie existiert
 IF OBJECT_ID('sp_FillDimProdukt', 'P') IS NOT NULL
     BEGIN
-        DROP PROCEDURE dwh1.sp_FillDimArtikel;
+        DROP PROCEDURE dwh1.sp_FillDimProdukt;
     END
 
 DELETE D_Produkt;
@@ -27,17 +27,17 @@ BEGIN
 	Stückzahl TINYINT NOT NULL)
     
     SELECT * INTO #WHILEPRODUKTE FROM BDB_BackZeit.bdb_Kassensystem.Produkt;    --Alle Produkte in eine temporäre Tabelle speichern, die dann interativ gelöscht wird um alle Produkte einmal durchzugehen
-
-    WHILE @@ROWCOUNT <> 0 --Solange #WHILEPRODUKTE Zeilen beinhaltet
+ 
+    WHILE @ProduktID IS NOT NULL --Solange #WHILEPRODUKTE Zeilen beinhaltet
     BEGIN
-        SELECT * FROM #WHILEPRODUKTE WHERE ProduktID = @ProduktID
-        SET @NeuesteRezeptVersion = MAX((SELECT RezeptVersion FROM BDB_BackZeit.bdb_Rezepte.Rezept WHERE ProduktID = @ProduktID))
+        --SELECT * FROM #WHILEPRODUKTE WHERE ProduktID = @ProduktID
+        SET @NeuesteRezeptVersion = (SELECT Max(RezeptVersion) FROM BDB_BackZeit.bdb_Rezepte.Rezept WHERE ProduktID = @ProduktID)
         Insert INTO #AKTUELLEREZEPTE (ProduktID, Zubereitungsdauer, Backzeit, Stückzahl)
             SELECT ProduktID, Zubereitungsdauer, Backzeit, Stückzahl
                 FROM BDB_BackZeit.bdb_Rezepte.Rezept
                 WHERE ProduktID = @ProduktID AND RezeptVersion = @NeuesteRezeptVersion;
         DELETE FROM #WHILEPRODUKTE WHERE ProduktID = @ProduktID
-        SET @ProduktID = (SELECT TOP(1) ProduktID FROM #WHILEPRODUKTE);
+        SET @ProduktID = (SELECT TOP(1) ProduktID FROM #WHILEPRODUKTE)
     END
         
     INSERT INTO D_Produkt (ProduktID, ProduktName, Bruttopreis, Nettopreis, Lagerkosten, Backkosten, Lohnkosten, Zutatenkosten, KategorieID, KategorieName)
@@ -74,4 +74,6 @@ GO
 EXEC sp_FillDimProdukt;
 SELECT *
 FROM   D_Produkt;
+
+
        
