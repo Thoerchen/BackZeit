@@ -2,12 +2,12 @@
 
 USE BDB_BackZeit;
 
-INSERT INTO DWH_BackZeit.dbo.D_Datum(DatumID, Tag, Woche, Monat, Jahr, Wochentag, MonatLang, MonatKurz)
+INSERT INTO DWH_BackZeit.dbo.D_Datum(DatumID, Tag, Quartal, Monat, Jahr, Wochentag, MonatLang, MonatKurz)
 SELECT DISTINCT
     CONVERT(INT, CONVERT(CHAR(8), Zeitpunkt, 112)) AS DatumID, -- 112 ist Format YYYYMMDD
-    DAY(Zeitpunkt) AS Tag,
-    DATEPART(ISO_WEEK, Zeitpunkt) AS Woche, -- ISO_WEEK ist die internationale ISO-Zählweise für KWs
-    MONTH(Zeitpunkt) AS Monat,
+    CONVERT(CHAR(10), Zeitpunkt, 23) AS Tag, -- 23 ist Format YYYY-MM-DD
+    CONCAT(YEAR(Zeitpunkt), '-Q', DATEPART(QUARTER, Zeitpunkt)) AS Quartal,
+    CONVERT(CHAR(7), Zeitpunkt, 23) AS Monat,
     YEAR(Zeitpunkt) AS Jahr,
 
     --Wochentag bestimmen
