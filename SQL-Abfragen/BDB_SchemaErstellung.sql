@@ -140,7 +140,7 @@ CREATE TABLE bdb_Rezepte.Zutat(
 	Bezeichnung NVARCHAR(50) NOT NULL
 );
 --
-CREATE TABLE bdb_Rezepte.beinhalet(
+CREATE TABLE bdb_Rezepte.beinhaltet(
 	ZutatID INT NOT NULL,
 	RezeptVersion SMALLINT NOT NULL,
 	ProduktID INT NOT NULL,

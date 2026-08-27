@@ -87,7 +87,7 @@ CREATE TABLE F_Verkäuferumsatz (
     VerkaufsvorgangID     INT          NOT NULL  ,
     VerkäuferID       INT          NOT NULL  ,
     Gesamtumsatz         Decimal(7, 2)     NOT NULL  ,
-    DurchschnittlicherUmsatz AS (Gesamtumsatz / AnzahlVerkäufe) NOT NULL,
+    DurchschnittlicherUmsatz AS (Gesamtumsatz / AnzahlVerkäufe),
     AnzahlVerkäufe SMALLINT NOT NULL,
     PRIMARY KEY (DatumID, VerkaufsvorgangID, VerkäuferID),
     FOREIGN KEY (DatumID) REFERENCES D_Datum (DatumID) ON DELETE CASCADE,
