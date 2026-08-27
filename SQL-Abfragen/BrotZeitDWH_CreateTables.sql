@@ -60,6 +60,7 @@ CREATE TABLE D_Verkaufsvorgang (
     VerkaufsvorgangID            INT           PRIMARY KEY IDENTITY(1,1),
     Zeitpunkt   DATETIME2 NOT NULL,
     FilialID    INT NOT NULL,
+    Umsatz      DECIMAL(7,2) NOT NULL,
     Zahlart CHAR(1), --'b' für Barzahlung und 'k' für Kartenzahlung
     CONSTRAINT UQ_Verkaufsvorgang UNIQUE (Zeitpunkt, FilialID)
 );

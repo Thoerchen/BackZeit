@@ -3,7 +3,6 @@
 USE BDB_BackZeit;
 GO
 
--- 100 Adressdatensätze einfügen
 INSERT INTO bdb_Verwaltung.Adresse (Straße, PLZ, Ort, Hausnummer)
 VALUES
 ('Hauptstraße', '10115', 'Berlin', '12'),
