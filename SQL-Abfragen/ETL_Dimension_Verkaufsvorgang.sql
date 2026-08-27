@@ -31,7 +31,16 @@ JOIN
 JOIN
     BDB_BackZeit.bdb_Kassensystem.Verkauf AS v ON v.FilialID = wirdV.FilialID AND wirdV.Zeitpunkt = v.Zeitpunkt
 
+WHERE
+    NOT EXISTS
+        (SELECT 1
+        FROM DWH_BackZeit.dbo.D_Verkaufsvorgang AS dv
+            WHERE dv.FilialID = wirdV.FilialID
+            AND dv.Zeitpunkt = wirdV.Zeitpunkt
+        )
+
 GROUP BY wirdV.FilialID, wirdV.Zeitpunkt, v.Zahlart;
+
 
 SELECT * FROM DWH_BackZeit.dbo.D_Verkaufsvorgang
 
