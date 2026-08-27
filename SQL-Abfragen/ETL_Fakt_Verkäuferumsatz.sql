@@ -12,28 +12,38 @@ GO
 CREATE PROCEDURE sp_FillFactVerkaeuferumsatz
 AS
 BEGIN
-    DECLARE @GesamtumsatzVorher DECIMAL(7,2);
-    --SET @GesamtumsatzVorher = 
-
-    INSERT INTO F_Verkäuferumsatz (DatumID, VerkäuferID, Gesamtumsatz, AnzahlVerkäufe)
-    SELECT  CONVERT(INT, CONVERT(CHAR(8), v.Zeitpunkt, 112)),
-            vm.VerkäuferID,
-            --Gesasmtumsatz = Bisher größter Umsatz + Aktueller Umsatz
-            ISNULL((SELECT MAX(Gesamtumsatz) FROM F_Verkäuferumsatz AS f WHERE f.VerkäuferID = vm.VerkäuferID), 0)
-            + ISNULL((SELECT TOP(1) Umsatz FROM D_Verkaufsvorgang AS vv WHERE vv.Zeitpunkt = v.Zeitpunkt AND vv.FilialID = v.FilialID), 0),
-            --Anzahl Verkäufe = bisher größte ANzahl an Verkäufen + 1
-            ISNULL((SELECT MAX(AnzahlVerkäufe) FROM F_Verkäuferumsatz AS f WHERE f.VerkäuferID = vm.VerkäuferID),0) + 1
-    FROM   BDB_BackZeit.bdb_Kassensystem.Verkäufer AS vm
+    WITH BisherigeWerte AS
+        (SELECT bdbv.VerkäuferID AS VerkäuferID, SUM(vv.Umsatz) AS bisherigeUmsätze, COUNT(vv.VerkaufsvorgangID) AS bisherigeVerkäufe
+            FROM D_Verkaufsvorgang AS vv
+            Inner JOIN
+            BDB_BackZeit.bdb_Kassensystem.Verkauf AS bdbv
+            ON vv.Zeitpunkt = bdbv.Zeitpunkt AND vv.FilialID = bdbv.FilialID
+        GROUP BY bdbv.VerkäuferID)
+    
+    INSERT INTO F_Verkäuferumsatz (DatumID, VerkäuferID, VerkaufsvorgangID, Gesamtumsatz, AnzahlVerkäufe)
+    SELECT  CONVERT(INT, CONVERT(CHAR(8), vv.Zeitpunkt, 112)),
+            v.VerkäuferID,
+            vv.VerkaufsvorgangID,
+            bw.bisherigeUmsätze,
+            bw.bisherigeVerkäufe
+    FROM   D_Verkäufer AS v
            Inner JOIN
-           BDB_BackZeit.bdb_Kassensystem.Verkauf AS v
-           ON vm.VerkäuferID = v.VerkäuferID    
-    GROUP BY vm.VerkäuferID
+           BDB_BackZeit.bdb_Kassensystem.Verkauf AS bdbv
+           ON bdbv.VerkäuferID = v.VerkäuferID
+           INNER JOIN
+           D_Verkaufsvorgang AS vv
+           ON vv.Zeitpunkt = bdbv.Zeitpunkt AND vv.FilialID = bdbv.FilialID
+           INNER JOIN
+           BisherigeWerte AS bw
+           ON bw.VerkäuferID = v.VerkäuferID
 END
 
 
 GO
 
-EXEC sp_FillDimProdukt;
+EXEC sp_FillFactVerkaeuferumsatz;
 SELECT *
-FROM   D_Produkt;
-       
+FROM   F_Verkäuferumsatz;
+
+--DELETE F_Verkäuferumsatz;
+    
