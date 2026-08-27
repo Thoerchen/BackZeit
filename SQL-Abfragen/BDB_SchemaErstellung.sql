@@ -70,7 +70,8 @@ CREATE TABLE bdb_Kassensystem.Verkauf(
     Zahlart CHAR(1),
     VerkäuferID INT NOT NULL,
     FOREIGN KEY (FilialID) REFERENCES bdb_Immobilienverwaltung.Filiale(FilialID),
-    FOREIGN KEY (VerkäuferID) REFERENCES bdb_Kassensystem.Verkäufer(VerkäuferID)
+    FOREIGN KEY (VerkäuferID) REFERENCES bdb_Kassensystem.Verkäufer(VerkäuferID),
+	CONSTRAINT c_zahlart CHECK (Zahlart IN ('B', 'K'))
 );
 
 CREATE TABLE bdb_Kassensystem.Kategorie(
@@ -139,7 +140,7 @@ CREATE TABLE bdb_Rezepte.Zutat(
 	Bezeichnung NVARCHAR(50) NOT NULL
 );
 --
-CREATE TABLE bdb_Rezepte.beinhaltet(
+CREATE TABLE bdb_Rezepte.beinhalet(
 	ZutatID INT NOT NULL,
 	RezeptVersion SMALLINT NOT NULL,
 	ProduktID INT NOT NULL,
