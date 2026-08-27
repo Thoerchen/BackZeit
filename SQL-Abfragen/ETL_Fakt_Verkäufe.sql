@@ -17,7 +17,7 @@ BEGIN
     INSERT INTO DWH_BackZeit.dbo.F_Verkäufe (DatumID, ZeitID, ProduktID, FilialID, VerkäuferID, AnzahlProdukte, Umsatz, Gewinn)
     SELECT
         CONVERT(INT, CONVERT(CHAR(8), CAST(v.Zeitpunkt AS DATE), 112)) AS DatumID,
-        z.ZeitID,
+        DATEPART(HOUR, v.Zeitpunkt) AS ZeitID,
         w.ProduktID,
         v.FilialID,
         v.VerkäuferID,
@@ -45,10 +45,6 @@ BEGIN
     INNER JOIN DWH_BackZeit.dbo.D_Produkt dp
         ON w.ProduktID = dp.ProduktID
 
-    INNER JOIN DWH_BackZeit.dbo.D_Zeit z
-        ON z.Stunde =
-           RIGHT('0' + CAST(DATEPART(HOUR, v.Zeitpunkt) AS VARCHAR(2)), 2)
-
     -- Verhindert, dass bereits geladene Verkäufe erneut eingefügt werden
     WHERE NOT EXISTS
     (
@@ -56,7 +52,7 @@ BEGIN
         FROM DWH_BackZeit.dbo.F_Verkäufe f
         WHERE f.DatumID =
               CONVERT(INT, CONVERT(CHAR(8), CAST(v.Zeitpunkt AS DATE), 112))
-          AND f.ZeitID = z.ZeitID
+          AND f.ZeitID = DATEPART(HOUR, v.Zeitpunkt)
           AND f.ProduktID = w.ProduktID
           AND f.FilialID = v.FilialID
           AND f.VerkäuferID = v.VerkäuferID
@@ -68,3 +64,5 @@ EXEC dbo.ETL_F_Verkaeufe;
 GO
 
 SELECT * FROM DWH_BackZeit.dbo.F_Verkäufe
+
+--DELETE DWH_BackZeit.dbo.F_Verkäufe
