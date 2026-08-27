@@ -14,9 +14,9 @@ GO
 --DROP TABLE D_Verkaufsvorgang;
 
 CREATE TABLE D_Datum (
-    DatumID   INT   Primary Key Identity(1,1),
+    DatumID   INT   Primary Key,
     Tag     VARCHAR (10)   NOT NULL,
-    Woche   VARCHAR (7)   NOT NULL,
+    Quartal   VARCHAR (7)   NOT NULL,
     Monat   VARCHAR (7)   NOT NULL,
     Jahr      VARCHAR (4)   NOT NULL,
     Wochentag NVARCHAR (15) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE F_Verkäuferumsatz (
     VerkaufsvorgangID     INT          NOT NULL  ,
     VerkäuferID       INT          NOT NULL  ,
     Gesamtumsatz         Decimal(7, 2)     NOT NULL  ,
-    DurchschnittlicherUmsatz DECIMAL (7, 2) NOT NULL,
+    DurchschnittlicherUmsatz AS (Gesamtumsatz / AnzahlVerkäufe) NOT NULL,
     AnzahlVerkäufe SMALLINT NOT NULL,
     PRIMARY KEY (DatumID, VerkaufsvorgangID, VerkäuferID),
     FOREIGN KEY (DatumID) REFERENCES D_Datum (DatumID) ON DELETE CASCADE,
