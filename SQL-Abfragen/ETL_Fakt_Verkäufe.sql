@@ -2,11 +2,10 @@ USE DWH_BackZeit;
 GO
 
 -- Entfernen der Stored Procedure, falls sie existiert
-IF OBJECT_ID('sp_FillFactVerkaeufe', 'P') IS NOT NULL
-    BEGIN
-        DROP PROCEDURE sp_FillFactVerkaeufe;
-    END
-
+IF OBJECT_ID('dbo.ETL_F_Verkaeufe', 'P') IS NOT NULL
+BEGIN
+    DROP PROCEDURE dbo.ETL_F_Verkaeufe;
+END
 GO
 
 -- Erstellen der Stored Procedure
@@ -23,14 +22,16 @@ BEGIN
         v.FilialID,
         v.VerkäuferID,
 
+        -- AnzahlProdukte
+        CAST(w.Menge AS SMALLINT) AS AnzahlProdukte,
+
         --Umsatz
         CAST( w.Menge * p.Nettopreis AS DECIMAL(7,2)) AS Umsatz,
 
         -- Gewinn
-        CAST(w.Menge * p.Gewinnbetrag AS DECIMAL(7,2)) AS Gewinn,
+        CAST(w.Menge * dp.Gewinnbetrag AS DECIMAL(7,2)) AS Gewinn
 
-        -- AnzahlProdukte
-        CAST(w.Menge AS SMALLINT) AS AnzahlProdukte
+        
 
     FROM BDB_BackZeit.bdb_Kassensystem.Verkauf v
 
@@ -41,8 +42,12 @@ BEGIN
     INNER JOIN BDB_BackZeit.bdb_Kassensystem.Produkt p
         ON w.ProduktID = p.ProduktID
 
+    INNER JOIN DWH_BackZeit.dbo.D_Produkt dp
+        ON w.ProduktID = dp.ProduktID
+
     INNER JOIN DWH_BackZeit.dbo.D_Zeit z
-        ON z.Stunde = RIGHT('0' + CAST(DATEPART(HOUR, v.Zeitpunkt) AS VARCHAR(2)), 2)
+        ON z.Stunde =
+           RIGHT('0' + CAST(DATEPART(HOUR, v.Zeitpunkt) AS VARCHAR(2)), 2)
 
     -- Verhindert, dass bereits geladene Verkäufe erneut eingefügt werden
     WHERE NOT EXISTS
@@ -60,3 +65,6 @@ END;
 GO
 
 EXEC dbo.ETL_F_Verkaeufe;
+GO
+
+SELECT * FROM DWH_BackZeit.dbo.F_Verkäufe
