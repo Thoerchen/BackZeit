@@ -1,4 +1,22 @@
+--- ETL für Dimension Verkaufsvorgang
+
 USE BDB_BackZeit;
+GO
+
+
+-- Stored Procedure entfernen, falls sie bereits existiert
+IF OBJECT_ID('sp_FillDimVerkaufsvorgang', 'P') IS NOT NULL
+    BEGIN
+        DROP PROCEDURE sp_FillDimVerkaufsvorgang;
+    END
+
+GO
+
+
+-- Stored Procedure erstellen
+CREATE PROCEDURE sp_FillDimVerkaufsvorgang
+AS
+BEGIN
 
 INSERT INTO DWH_BackZeit.dbo.D_Verkaufsvorgang(Zahlart, FilialID, Zeitpunkt, Umsatz) 
 SELECT
@@ -13,7 +31,29 @@ JOIN
 JOIN
     BDB_BackZeit.bdb_Kassensystem.Verkauf AS v ON v.FilialID = wirdV.FilialID AND wirdV.Zeitpunkt = v.Zeitpunkt
 
+WHERE
+    NOT EXISTS
+        (SELECT 1
+        FROM DWH_BackZeit.dbo.D_Verkaufsvorgang AS dv
+            WHERE dv.FilialID = wirdV.FilialID
+            AND dv.Zeitpunkt = wirdV.Zeitpunkt
+        )
+
 GROUP BY wirdV.FilialID, wirdV.Zeitpunkt, v.Zahlart;
 
+
 SELECT * FROM DWH_BackZeit.dbo.D_Verkaufsvorgang
-    
+
+END
+
+GO
+
+-- Stored Procedure ausführen
+EXECUTE sp_FillDimVerkaufsvorgang;
+
+GO
+
+-- Ergebnis kontrollieren
+SELECT *
+FROM   DWH_BackZeit.dbo.D_Verkaufsvorgang;
+
