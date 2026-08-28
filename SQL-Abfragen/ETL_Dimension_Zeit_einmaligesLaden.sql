@@ -2,18 +2,6 @@
 USE DWH_BackZeit;
 GO
 
--- Tabelle nur einmalig erstellen
---IF OBJECT_ID('DWH_BackZeit.dbo.D_Zeit', 'U') IS NULL
---BEGIN
---    CREATE TABLE DWH_BackZeit.dbo.D_Zeit
---    (
---        ZeitID INT PRIMARY KEY,
---        Stunde INT NOT NULL,
---        Tageszeit VARCHAR(10) NOT NULL
---    );
---END
---GO
-
 -- Tabelle nur befüllen, wenn sie noch keine Einträge enthält
 IF NOT EXISTS (SELECT 1 FROM DWH_BackZeit.dbo.D_Zeit)
 BEGIN
@@ -45,9 +33,6 @@ BEGIN
         (22, 22, 'Nacht'),
         (23, 23, 'Nacht');
 END
-GO
-
-TRUNCATE TABLE DWH_BackZeit.dbo.D_Zeit;
 GO
 
 SELECT *
